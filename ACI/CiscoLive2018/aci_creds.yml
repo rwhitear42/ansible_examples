@@ -1,0 +1,4 @@
+---
+  apic_ip: "CiscoLiveAPIC.cisco.com"
+  aci_username: "CL18"
+  aci_password: "C!scolive"

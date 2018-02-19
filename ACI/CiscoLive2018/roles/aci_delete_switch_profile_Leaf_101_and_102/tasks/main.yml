@@ -1,0 +1,84 @@
+---
+- name: Delete Access Port Leaf Profile
+  aci_rest:
+    hostname: '{{ apic_ip }}'
+    username: '{{ aci_username }}'
+    password: '{{ aci_password }}'
+    validate_certs: no
+    path: /api/mo/.json
+    method: post
+    content: |
+      {
+        "infraNodeP": {
+          "attributes": {
+            "descr": "", 
+            "dn": "uni/infra/nprof-Leaf_101_and_102", 
+            "name": "Leaf_101_and_102", 
+            "nameAlias": "", 
+            "ownerKey": "", 
+            "ownerTag": ""
+          }, 
+          "children": [
+            {
+              "infraRsAccPortP": {
+                "attributes": {
+                  "tDn": "uni/infra/accportprof-{{ item.leaf_profile_name }}",
+                  "status": "{{ item.status_is }}"
+                }
+              }
+            }, 
+            {
+              "infraLeafS": {
+                "attributes": {
+                  "descr": "", 
+                  "name": "Leaf-101", 
+                  "nameAlias": "", 
+                  "ownerKey": "", 
+                  "ownerTag": "", 
+                  "type": "range"
+                }, 
+                "children": [
+                  {
+                    "infraNodeBlk": {
+                      "attributes": {
+                        "descr": "", 
+                        "from_": "101", 
+                        "name": "99f440e8ae385770", 
+                        "nameAlias": "", 
+                        "to_": "101"
+                      }
+                    }
+                  }
+                ]
+              }
+            }, 
+            {
+              "infraLeafS": {
+                "attributes": {
+                  "descr": "", 
+                  "name": "Leaf-102", 
+                  "nameAlias": "", 
+                  "ownerKey": "", 
+                  "ownerTag": "", 
+                  "type": "range"
+                }, 
+                "children": [
+                  {
+                    "infraNodeBlk": {
+                      "attributes": {
+                        "descr": "", 
+                        "from_": "102", 
+                        "name": "94e47a99a8c7c628", 
+                        "nameAlias": "", 
+                        "to_": "102"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+  with_items:
+    - "{{ delete_accportprof_vars }}"    

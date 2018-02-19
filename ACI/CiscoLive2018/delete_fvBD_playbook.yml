@@ -1,0 +1,8 @@
+---
+
+- name: fvAp Playbook
+  hosts: apic01
+  connection: local
+
+  roles:
+    - aci_delete_fvBD

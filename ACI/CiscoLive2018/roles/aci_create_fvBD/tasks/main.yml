@@ -1,0 +1,94 @@
+---
+- name: Delete ACI Application Profile
+  aci_rest:
+    hostname: '{{ apic_ip }}'
+    username: '{{ aci_username }}'
+    password: '{{ aci_password }}'
+    validate_certs: no
+    path: /api/mo/.json
+    method: post
+    content: |
+      {
+        "fvBD": {
+          "attributes": {
+            "OptimizeWanBandwidth": "no", 
+            "arpFlood": "no", 
+            "descr": "", 
+            "dn": "uni/tn-{{ item.tn_name }}/BD-{{ item.fvBD_name }}", 
+            "epClear": "no", 
+            "epMoveDetectMode": "", 
+            "intersiteBumTrafficAllow": "no", 
+            "intersiteL2Stretch": "no", 
+            "ipLearning": "yes", 
+            "limitIpLearnToSubnets": "yes", 
+            "llAddr": "::", 
+            "mac": "00:22:BD:F8:19:FF", 
+            "mcastAllow": "no", 
+            "multiDstPktAct": "bd-flood", 
+            "name": "{{ item.fvBD_name }}", 
+            "nameAlias": "", 
+            "ownerKey": "", 
+            "ownerTag": "", 
+            "status": "{{ item.status_is }}", 
+            "type": "regular", 
+            "unicastRoute": "yes", 
+            "unkMacUcastAct": "proxy", 
+            "unkMcastAct": "flood", 
+            "vmac": "not-applicable"
+          }, 
+          "children": [
+            {
+              "fvSubnet": {
+                "attributes": {
+                  "ctrl": "nd", 
+                  "descr": "", 
+                  "ip": "{{ item.ip_gateway }}", 
+                  "name": "", 
+                  "nameAlias": "", 
+                  "preferred": "no", 
+                  "scope": "{{ item.scope }}", 
+                  "virtual": "no"
+                }
+              }
+            }, 
+            {
+              "fvRsIgmpsn": {
+                "attributes": {
+                  "tnIgmpSnoopPolName": ""
+                }
+              }
+            }, 
+            {
+              "fvRsCtx": {
+                "attributes": {
+                  "tnFvCtxName": "{{ item.tnFvCtx_name }}"
+                }
+              }
+            }, 
+            {
+              "fvRsBdToEpRet": {
+                "attributes": {
+                  "resolveAct": "resolve", 
+                  "tnFvEpRetPolName": ""
+                }
+              }
+            }, 
+            {
+              "fvRsBDToOut": {
+                "attributes": {
+                  "tnL3extOutName": "{{ item.tnL3extOut_name }}"
+                }
+              }
+            }, 
+            {
+              "fvRsBDToNdP": {
+                "attributes": {
+                  "tnNdIfPolName": ""
+                }
+              }
+            }
+          ]
+        }
+      }
+  with_items:
+    - "{{ create_fvBD_vars }}"

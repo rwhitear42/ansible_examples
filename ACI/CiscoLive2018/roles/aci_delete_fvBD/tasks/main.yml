@@ -1,0 +1,31 @@
+---
+- name: Delete ACI Application Profile
+  aci_rest:
+    hostname: '{{ apic_ip }}'
+    username: '{{ aci_username }}'
+    password: '{{ aci_password }}'
+    validate_certs: no
+    path: /api/mo/.json
+    method: post
+    content: |
+      {
+        "fvTenant": {
+          "attributes": {
+            "dn": "uni/tn-{{ item.tn_name }}", 
+            "status": "modified"
+          }, 
+          "children": [
+            {
+              "fvBD": {
+                "attributes": {
+                  "dn": "uni/tn-{{ item.tn_name }}/BD-{{ item.fvBD_name }}", 
+                  "status": "deleted"
+                }, 
+                "children": []
+              }
+            }
+          ]
+        }
+      }
+  with_items:
+    - "{{ delete_fvBD_vars }}"

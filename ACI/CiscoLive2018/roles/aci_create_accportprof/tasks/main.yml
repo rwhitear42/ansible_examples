@@ -1,0 +1,64 @@
+---
+- name: Create Access Port Profile
+  aci_rest:
+    hostname: '{{ apic_ip }}'
+    username: '{{ aci_username }}'
+    password: '{{ aci_password }}'
+    validate_certs: no
+    path: /api/mo/.json
+    method: post
+    content: |
+      {
+        "infraAccPortP": {
+          "attributes": {
+            "descr": "{{ item.description }}", 
+            "dn": "uni/infra/accportprof-{{ item.leaf_profile_name }}", 
+            "name": "{{ item.leaf_profile_name }}", 
+            "nameAlias": "", 
+            "ownerKey": "", 
+            "ownerTag": "", 
+            "status": "{{ item.status_is }}"
+          }, 
+          "children": [
+            {
+              "infraHPortS": {
+                "attributes": {
+                  "descr": "", 
+                  "name": "{{ item.description_of_attached_devices }}", 
+                  "nameAlias": "", 
+                  "ownerKey": "", 
+                  "ownerTag": "", 
+                  "status": "{{ item.status_is }}", 
+                  "type": "range"
+                }, 
+                "children": [
+                  {
+                    "infraRsAccBaseGrp": {
+                      "attributes": {
+                        "fexId": "101", 
+                        "tDn": "uni/infra/funcprof/accportgrp-{{ item.interface_policy_group }}"
+                      }
+                    }
+                  }, 
+                  {
+                    "infraPortBlk": {
+                      "attributes": {
+                        "descr": "{{ item.description_of_attached_device }}", 
+                        "fromCard": "1", 
+                        "fromPort": "{{ item.interface_number }}", 
+                        "name": "{{ item.interface_number }}", 
+                        "nameAlias": "", 
+                        "status": "{{ item.status_is }}", 
+                        "toCard": "1", 
+                        "toPort": "{{ item.interface_number }}"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+  with_items:
+    - "{{ create_accportprof_vars }}"

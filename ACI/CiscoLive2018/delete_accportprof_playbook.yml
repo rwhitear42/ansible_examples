@@ -1,0 +1,10 @@
+---
+
+- name: Delete Access Port Profile Playbook
+  hosts: apic01
+  connection: local
+
+  roles:
+    - aci_create_snapshot
+    - aci_delete_switch_profile_Leaf_101_and_102
+    - aci_delete_leafprofile

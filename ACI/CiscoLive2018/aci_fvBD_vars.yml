@@ -1,0 +1,101 @@
+---
+  # Create BDs.    
+  create_fvBD_vars:
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: 192.168.100.x_24
+      ip_gateway: 192.168.100.1/24
+      scope: public,shared
+      tnL3extOut_name: OSPF_to_external_vrf-global
+      status_is: 'created,modified'
+
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: 192.168.101.x_24
+      ip_gateway: 192.168.101.1/24
+      scope: public,shared
+      tnL3extOut_name: OSPF_to_external_vrf-global
+      status_is: 'created,modified'
+
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: 192.168.102.x_24
+      ip_gateway: 192.168.102.1/24
+      scope: public,shared
+      tnL3extOut_name: OSPF_to_external_vrf-global
+      status_is: 'created,modified'
+
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: 192.168.103.x_24
+      ip_gateway: 192.168.103.1/24
+      scope: public,shared
+      tnL3extOut_name: OSPF_to_external_vrf-global
+      status_is: 'created,modified'
+
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: 192.168.104.x_24
+      ip_gateway: 192.168.104.1/24
+      scope: public,shared
+      tnL3extOut_name: OSPF_to_external_vrf-global
+      status_is: 'created,modified'
+
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: 192.168.105.x_24
+      ip_gateway: 192.168.105.1/24
+      scope: public,shared
+      tnL3extOut_name: OSPF_to_external_vrf-global
+      status_is: 'created,modified'
+
+  # Delete BDs.    
+  delete_fvBD_vars:
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: 192.168.100.x_24
+      ip_gateway: 192.168.100.1/24
+      scope: public,shared
+      tnL3extOut_name: OSPF_to_external_vrf-global
+      status_is: 'deleted'
+
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: 192.168.101.x_24
+      ip_gateway: 192.168.101.1/24
+      scope: public,shared
+      tnL3extOut_name: OSPF_to_external_vrf-global
+      status_is: 'deleted'
+
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: 192.168.102.x_24
+      ip_gateway: 192.168.102.1/24
+      scope: public,shared
+      tnL3extOut_name: OSPF_to_external_vrf-global
+      status_is: 'deleted'
+
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: 192.168.103.x_24
+      ip_gateway: 192.168.103.1/24
+      scope: public,shared
+      tnL3extOut_name: OSPF_to_external_vrf-global
+      status_is: 'deleted'
+
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: 192.168.104.x_24
+      ip_gateway: 192.168.104.1/24
+      scope: public,shared
+      tnL3extOut_name: OSPF_to_external_vrf-global
+      status_is: 'deleted'
+
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: 192.168.105.x_24
+      ip_gateway: 192.168.105.1/24
+      scope: public,shared
+      tnL3extOut_name: OSPF_to_external_vrf-global
+      status_is: 'deleted'
+

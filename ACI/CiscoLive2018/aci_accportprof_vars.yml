@@ -1,0 +1,55 @@
+---
+  # Create Access Port Profiles.    
+  create_accportprof_vars:
+    - description: Leaf_101_and_102
+      description_of_attached_devices: esx_hosts
+      description_of_attached_device: esx_host_1
+      interface_number: 31
+      interface_policy_group: 1Gbps_acc_to_esx_host
+      leaf_profile_name: Leaf_101_and_102
+      status_is: 'created,modified'
+
+    - description: Leaf_101_and_102
+      description_of_attached_devices: esx_hosts
+      description_of_attached_device: esx_host_2
+      interface_number: 32
+      interface_policy_group: 1Gbps_acc_to_esx_host
+      leaf_profile_name: Leaf_101_and_102
+      status_is: 'created,modified'
+
+    - description: Leaf_101_and_102
+      description_of_attached_devices: esx_hosts
+      description_of_attached_device: esx_host_3
+      interface_number: 33
+      interface_policy_group: 1Gbps_acc_to_esx_host
+      leaf_profile_name: Leaf_101_and_102
+      status_is: 'created,modified'
+
+    - description: Leaf_101_and_102
+      description_of_attached_devices: esx_hosts
+      description_of_attached_device: esx_host_4
+      interface_number: 34
+      interface_policy_group: 1Gbps_acc_to_esx_host
+      leaf_profile_name: Leaf_101_and_102
+      status_is: 'created,modified'
+
+    - description: Leaf_101_and_102
+      description_of_attached_devices: esx_hosts
+      description_of_attached_device: esx_host_5
+      interface_number: 35
+      interface_policy_group: 1Gbps_acc_to_esx_host
+      leaf_profile_name: Leaf_101_and_102
+      status_is: 'created,modified'
+
+    - description: Leaf_101_and_102
+      description_of_attached_devices: windows_servers
+      description_of_attached_device: windows_svr_1
+      interface_number: 36
+      interface_policy_group: 1Gbps_acc_to_win_host
+      leaf_profile_name: Leaf_101_and_102
+      status_is: 'created,modified'
+
+  # Delete Access Port Profiles
+  delete_accportprof_vars:
+    - leaf_profile_name: Leaf_101_and_102
+      status_is: 'deleted'

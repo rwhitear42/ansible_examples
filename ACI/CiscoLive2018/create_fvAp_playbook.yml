@@ -1,0 +1,9 @@
+---
+
+- name: fvAp Playbook
+  hosts: apic01
+  connection: local
+
+  roles:
+    - aci_fvAp
+    - aci_fvAEPg

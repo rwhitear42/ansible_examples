@@ -1,0 +1,38 @@
+---
+  # Create App Profile.
+  create_fvAp_vars:
+    - tn_name: Ciscolive
+      fvAp_name: MyApp_1
+      status_is: 'created,modified'
+
+  # Create EPGs.    
+  create_fvAEPg_vars:
+    - tn_name: Ciscolive
+      fvAp_name: MyApp_1
+      fvAEPg_name: Web
+      provided_contract: shared_L3out
+      tnFvBDName: 192.168.10.x_24
+      vmm_name: Ciscolive-vds-01
+      status_is: 'created,modified'
+
+    - tn_name: Ciscolive
+      fvAp_name: MyApp_1
+      fvAEPg_name: App
+      provided_contract: shared_L3out
+      tnFvBDName: 192.168.11.x_24
+      vmm_name: Ciscolive-vds-01
+      status_is: 'created,modified'
+
+    - tn_name: Ciscolive
+      fvAp_name: MyApp_1
+      fvAEPg_name: DB
+      provided_contract: shared_L3out
+      tnFvBDName: 192.168.12.x_24
+      vmm_name: Ciscolive-vds-01
+      status_is: 'created,modified'
+
+  # Delete App Profile.
+  delete_fvAp_vars:
+    - tn_name: Ciscolive
+      fvAp_name: MyApp_1
+      status_is: 'deleted'

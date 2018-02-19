@@ -1,0 +1,20 @@
+---
+  - name: ACI query VRFs
+    hosts: localhost
+
+    vars_files:
+      - aci_creds.yml
+
+    tasks:    
+      - name: Add a new VRF to a tenant
+        aci_vrf:
+          hostname: '{{ inventory_hostname }}'
+          username: '{{ aci_username }}'
+          password: '{{ aci_password }}'
+          validate_certs: no
+          vrf: VRF01
+          tenant: DeleteMe
+          descr: Created by Ansible
+          policy_control_preference: enforced
+          policy_control_direction: ingress
+          state: present

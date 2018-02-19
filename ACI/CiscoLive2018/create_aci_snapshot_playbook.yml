@@ -1,0 +1,8 @@
+---
+
+- name: ACI Create Snapshot Playbook
+  hosts: apic01
+  connection: local
+
+  roles:
+    - aci_create_snapshot

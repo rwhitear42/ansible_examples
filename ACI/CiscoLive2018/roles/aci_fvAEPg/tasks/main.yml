@@ -1,0 +1,75 @@
+---
+- name: Create ACI End Point Groups
+  aci_rest:
+    hostname: '{{ apic_ip }}'
+    username: '{{ aci_username }}'
+    password: '{{ aci_password }}'
+    validate_certs: no
+    path: /api/mo/.json
+    method: post
+    content: |
+      {
+        "fvAEPg": {
+          "attributes": {
+            "descr": "", 
+            "dn": "uni/tn-{{ item.tn_name }}/ap-{{ item.fvAp_name }}/epg-{{ item.fvAEPg_name }}", 
+            "fwdCtrl": "", 
+            "isAttrBasedEPg": "no", 
+            "matchT": "AtleastOne", 
+            "name": "{{ item.fvAEPg_name }}", 
+            "nameAlias": "", 
+            "pcEnfPref": "unenforced", 
+            "prefGrMemb": "exclude", 
+            "prio": "unspecified", 
+            "status": "{{ item.status_is }}"
+          }, 
+          "children": [
+            {
+              "fvRsProv": {
+                "attributes": {
+                  "matchT": "AtleastOne", 
+                  "prio": "unspecified", 
+                  "status": "{{ item.status_is }}", 
+                  "tnVzBrCPName": "{{ item.provided_contract }}"
+                }
+              }
+            }, 
+            {
+              "fvRsDomAtt": {
+                "attributes": {
+                  "classPref": "encap", 
+                  "delimiter": "", 
+                  "encap": "unknown", 
+                  "encapMode": "auto", 
+                  "epgCos": "Cos0", 
+                  "epgCosPref": "disabled", 
+                  "instrImedcy": "lazy", 
+                  "netflowDir": "both", 
+                  "netflowPref": "disabled", 
+                  "primaryEncap": "unknown", 
+                  "resImedcy": "immediate", 
+                  "status": "{{ item.status_is }}", 
+                  "tDn": "uni/vmmp-VMware/dom-{{ item.vmm_name }}"
+                }
+              }
+            }, 
+            {
+              "fvRsCustQosPol": {
+                "attributes": {
+                  "tnQosCustomPolName": ""
+                }
+              }
+            }, 
+            {
+              "fvRsBd": {
+                "attributes": {
+                  "status": "{{ item.status_is }}", 
+                  "tnFvBDName": "{{ item.tnFvBDName }}"
+                }
+              }
+            }
+          ]
+        }
+      }
+  with_items:
+    - "{{ create_fvAEPg_vars }}"

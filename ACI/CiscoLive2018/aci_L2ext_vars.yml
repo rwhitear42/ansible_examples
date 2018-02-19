@@ -1,0 +1,57 @@
+---
+  # Create L2 Extension.
+  create_L2ext_vars:
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: vlan-501
+      fvAEPg_name: vlan-501
+      fvAp_name: outside_vlans
+      path: [1Gbps_vPC_to_n5548]
+      vlan: vlan-501
+      status_is: 'created,modified'
+
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: vlan-502
+      fvAEPg_name: vlan-502
+      fvAp_name: outside_vlans
+      path: [1Gbps_vPC_to_n5548]
+      vlan: vlan-502
+      status_is: 'created,modified'
+
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: vlan-503
+      fvAEPg_name: vlan-503
+      fvAp_name: outside_vlans
+      path: [1Gbps_vPC_to_n5548]
+      vlan: vlan-503
+      status_is: 'created,modified'
+
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: vlan-504
+      fvAEPg_name: vlan-504
+      fvAp_name: outside_vlans
+      path: [1Gbps_vPC_to_n5548]
+      vlan: vlan-504
+      status_is: 'created,modified'
+
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: vlan-505
+      fvAEPg_name: vlan-505
+      fvAp_name: outside_vlans
+      path: [1Gbps_vPC_to_n5548]
+      vlan: vlan-505
+      status_is: 'created,modified'
+
+    - tn_name: Ciscolive
+      tnFvCtx_name: vrf-01
+      fvBD_name: vlan-506
+      fvAEPg_name: vlan-506
+      fvAp_name: outside_vlans
+      path: [1Gbps_vPC_to_n5548]
+      vlan: vlan-506
+      status_is: 'created,modified'
+

@@ -1,0 +1,10 @@
+---
+
+- name: Access Port Profile Playbook
+  hosts: apic01
+  connection: local
+
+  roles:
+    - aci_create_snapshot
+    - aci_create_leafprofile
+    - aci_create_switch_profile_Leaf_101_and_102

@@ -1,0 +1,9 @@
+aci_tenant:
+  - tenant_name: "DeleteMe1"
+  - tenant_name: "DeleteMe2"
+  - tenant_name: "DeleteMe3"
+  - tenant_name: "DeleteMe4"
+  
+aci_vrf:
+  - vrf_name: "VRF01"
+  - vrf_name: "VRF02"
