@@ -5,8 +5,8 @@
 
 The following roles are used in this playbook:
 * ```aci_create_snapshot``` - Create a configuration snapshot on APIC prior to making changes.
-* Create a new interface policy leaf profile on APIC and add a number of interface selectors and interface blocks.
-* Add the newly created leaf profile in the previous role to an existing switch policy leaf profile.
+* ```aci_create_leafprofile``` - Create a new interface policy leaf profile on APIC and add a number of interface selectors and interface blocks.
+* ```aci_create_switch_profile_Leaf_101_and_102``` - Add the newly created leaf profile in the previous role to an existing switch policy leaf profile.
 
 **_Example:_** ```ansible-playbook -e @aci_creds.yml -e @aci_accportprof_vars.yml create_accportprof_playbook.yml```
 
